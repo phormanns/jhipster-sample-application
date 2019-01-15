@@ -1,0 +1,40 @@
+{
+  "generator-jhipster": {
+    "applicationType": "monolith",
+    "gitCompany": "",
+    "baseName": "jhipstersample",
+    "packageName": "de.ostwall195.jhipster.sample",
+    "packageFolder": "de/ostwall195/jhipster/sample",
+    "serverPort": 8080,
+    "serviceDiscoveryType": false,
+    "authenticationType": "jwt",
+    "uaaBaseName": "../uaa",
+    "cacheProvider": "ehcache",
+    "enableHibernateCache": true,
+    "websocket": false,
+    "databaseType": "sql",
+    "devDatabaseType": "h2Disk",
+    "prodDatabaseType": "postgresql",
+    "searchEngine": false,
+    "enableSwaggerCodegen": false,
+    "messageBroker": false,
+    "buildTool": "maven",
+    "useSass": false,
+    "clientPackageManager": "npm",
+    "testFrameworks": [],
+    "enableTranslation": true,
+    "nativeLanguage": "de",
+    "languages": [
+      "en",
+      "de"
+    ],
+    "clientFramework": "angularX",
+    "jhiPrefix": "jhi",
+    "jhipsterVersion": "5.7.2",
+    "jwtSecretKey": "NGI3MjY2YjBhMWRkZDNlOGI1MWYwNGRhYzcxZWU5NTk2OTIyZGYyYjMyMmE4N2YxNmE5NTY5MDVlOTIyOTY2MzQ2YWIyMzgzM2ViOTM3Yjk1NWNkY2I3ZTlhZTBkNzdjNzA3YTRkN2Q1ZjZkZWVmOTRkZDllMjUzZTExMDNiNGE=",
+    "otherModules": []
+  },
+  "git-provider": "GitHub",
+  "git-company": "phormanns",
+  "repository-name": "jhipster-sample-application"
+}
