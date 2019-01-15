@@ -2,6 +2,7 @@ package de.ostwall195.jhipster.sample.web.rest;
 
 import com.codahale.metrics.annotation.Timed;
 import de.ostwall195.jhipster.sample.domain.Post;
+import de.ostwall195.jhipster.sample.security.AuthoritiesConstants;
 import de.ostwall195.jhipster.sample.service.PostService;
 import de.ostwall195.jhipster.sample.web.rest.errors.BadRequestAlertException;
 import de.ostwall195.jhipster.sample.web.rest.util.HeaderUtil;
@@ -22,6 +23,7 @@ import java.net.URISyntaxException;
 
 import java.util.List;
 import java.util.Optional;
+import org.springframework.security.access.prepost.PreAuthorize;
 
 /**
  * REST controller for managing Post.
@@ -49,6 +51,7 @@ public class PostResource {
      */
     @PostMapping("/posts")
     @Timed
+    @PreAuthorize("hasRole(\"" + AuthoritiesConstants.USER + "\")")
     public ResponseEntity<Post> createPost(@Valid @RequestBody Post post) throws URISyntaxException {
         log.debug("REST request to save Post : {}", post);
         if (post.getId() != null) {
@@ -71,6 +74,7 @@ public class PostResource {
      */
     @PutMapping("/posts")
     @Timed
+    @PreAuthorize("hasRole(\"" + AuthoritiesConstants.USER + "\")")
     public ResponseEntity<Post> updatePost(@Valid @RequestBody Post post) throws URISyntaxException {
         log.debug("REST request to update Post : {}", post);
         if (post.getId() == null) {
@@ -90,6 +94,7 @@ public class PostResource {
      */
     @GetMapping("/posts")
     @Timed
+    @PreAuthorize("hasRole(\"" + AuthoritiesConstants.USER + "\")")
     public ResponseEntity<List<Post>> getAllPosts(Pageable pageable) {
         log.debug("REST request to get a page of Posts");
         Page<Post> page = postService.findAll(pageable);
@@ -105,6 +110,7 @@ public class PostResource {
      */
     @GetMapping("/posts/{id}")
     @Timed
+    @PreAuthorize("hasRole(\"" + AuthoritiesConstants.USER + "\")")
     public ResponseEntity<Post> getPost(@PathVariable Long id) {
         log.debug("REST request to get Post : {}", id);
         Optional<Post> post = postService.findOne(id);
@@ -119,6 +125,7 @@ public class PostResource {
      */
     @DeleteMapping("/posts/{id}")
     @Timed
+    @PreAuthorize("hasRole(\"" + AuthoritiesConstants.USER + "\")")
     public ResponseEntity<Void> deletePost(@PathVariable Long id) {
         log.debug("REST request to delete Post : {}", id);
         postService.delete(id);

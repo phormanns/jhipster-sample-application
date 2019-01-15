@@ -2,6 +2,7 @@ package de.ostwall195.jhipster.sample.web.rest;
 
 import com.codahale.metrics.annotation.Timed;
 import de.ostwall195.jhipster.sample.domain.Tag;
+import de.ostwall195.jhipster.sample.security.AuthoritiesConstants;
 import de.ostwall195.jhipster.sample.service.TagService;
 import de.ostwall195.jhipster.sample.web.rest.errors.BadRequestAlertException;
 import de.ostwall195.jhipster.sample.web.rest.util.HeaderUtil;
@@ -22,6 +23,7 @@ import java.net.URISyntaxException;
 
 import java.util.List;
 import java.util.Optional;
+import org.springframework.security.access.prepost.PreAuthorize;
 
 /**
  * REST controller for managing Tag.
@@ -49,6 +51,7 @@ public class TagResource {
      */
     @PostMapping("/tags")
     @Timed
+    @PreAuthorize("hasRole(\"" + AuthoritiesConstants.USER + "\")")
     public ResponseEntity<Tag> createTag(@Valid @RequestBody Tag tag) throws URISyntaxException {
         log.debug("REST request to save Tag : {}", tag);
         if (tag.getId() != null) {
@@ -71,6 +74,7 @@ public class TagResource {
      */
     @PutMapping("/tags")
     @Timed
+    @PreAuthorize("hasRole(\"" + AuthoritiesConstants.USER + "\")")
     public ResponseEntity<Tag> updateTag(@Valid @RequestBody Tag tag) throws URISyntaxException {
         log.debug("REST request to update Tag : {}", tag);
         if (tag.getId() == null) {
@@ -91,6 +95,7 @@ public class TagResource {
      */
     @GetMapping("/tags")
     @Timed
+    @PreAuthorize("hasRole(\"" + AuthoritiesConstants.USER + "\")")
     public ResponseEntity<List<Tag>> getAllTags(Pageable pageable, @RequestParam(required = false, defaultValue = "false") boolean eagerload) {
         log.debug("REST request to get a page of Tags");
         Page<Tag> page;
@@ -111,6 +116,7 @@ public class TagResource {
      */
     @GetMapping("/tags/{id}")
     @Timed
+    @PreAuthorize("hasRole(\"" + AuthoritiesConstants.USER + "\")")
     public ResponseEntity<Tag> getTag(@PathVariable Long id) {
         log.debug("REST request to get Tag : {}", id);
         Optional<Tag> tag = tagService.findOne(id);
@@ -125,6 +131,7 @@ public class TagResource {
      */
     @DeleteMapping("/tags/{id}")
     @Timed
+    @PreAuthorize("hasRole(\"" + AuthoritiesConstants.USER + "\")")
     public ResponseEntity<Void> deleteTag(@PathVariable Long id) {
         log.debug("REST request to delete Tag : {}", id);
         tagService.delete(id);

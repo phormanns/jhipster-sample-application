@@ -2,6 +2,7 @@ package de.ostwall195.jhipster.sample.web.rest;
 
 import com.codahale.metrics.annotation.Timed;
 import de.ostwall195.jhipster.sample.domain.Blog;
+import de.ostwall195.jhipster.sample.security.AuthoritiesConstants;
 import de.ostwall195.jhipster.sample.service.BlogService;
 import de.ostwall195.jhipster.sample.web.rest.errors.BadRequestAlertException;
 import de.ostwall195.jhipster.sample.web.rest.util.HeaderUtil;
@@ -22,6 +23,7 @@ import java.net.URISyntaxException;
 
 import java.util.List;
 import java.util.Optional;
+import org.springframework.security.access.prepost.PreAuthorize;
 
 /**
  * REST controller for managing Blog.
@@ -49,6 +51,7 @@ public class BlogResource {
      */
     @PostMapping("/blogs")
     @Timed
+    @PreAuthorize("hasRole(\"" + AuthoritiesConstants.ADMIN + "\")")
     public ResponseEntity<Blog> createBlog(@Valid @RequestBody Blog blog) throws URISyntaxException {
         log.debug("REST request to save Blog : {}", blog);
         if (blog.getId() != null) {
@@ -71,6 +74,7 @@ public class BlogResource {
      */
     @PutMapping("/blogs")
     @Timed
+    @PreAuthorize("hasRole(\"" + AuthoritiesConstants.USER + "\")")
     public ResponseEntity<Blog> updateBlog(@Valid @RequestBody Blog blog) throws URISyntaxException {
         log.debug("REST request to update Blog : {}", blog);
         if (blog.getId() == null) {
@@ -90,6 +94,7 @@ public class BlogResource {
      */
     @GetMapping("/blogs")
     @Timed
+    @PreAuthorize("hasRole(\"" + AuthoritiesConstants.USER + "\")")
     public ResponseEntity<List<Blog>> getAllBlogs(Pageable pageable) {
         log.debug("REST request to get a page of Blogs");
         Page<Blog> page = blogService.findAll(pageable);
@@ -105,6 +110,7 @@ public class BlogResource {
      */
     @GetMapping("/blogs/{id}")
     @Timed
+    @PreAuthorize("hasRole(\"" + AuthoritiesConstants.USER + "\")")
     public ResponseEntity<Blog> getBlog(@PathVariable Long id) {
         log.debug("REST request to get Blog : {}", id);
         Optional<Blog> blog = blogService.findOne(id);
@@ -119,6 +125,7 @@ public class BlogResource {
      */
     @DeleteMapping("/blogs/{id}")
     @Timed
+    @PreAuthorize("hasRole(\"" + AuthoritiesConstants.ADMIN + "\")")
     public ResponseEntity<Void> deleteBlog(@PathVariable Long id) {
         log.debug("REST request to delete Blog : {}", id);
         blogService.delete(id);
