@@ -1,0 +1,52 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+            <h2 id="jhi-post-heading" jhiTranslate="jhipstersampleApp.post.home.createOrEditLabel">Create or edit a Post</h2>
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+                <div class="form-group" [hidden]="!post.id">
+                    <label for="id" jhiTranslate="global.field.id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id"
+                        [(ngModel)]="post.id" readonly />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="jhipstersampleApp.post.title" for="field_title">Title</label>
+                    <input type="text" class="form-control" name="title" id="field_title"
+                        [(ngModel)]="post.title" required/>
+                    <div [hidden]="!(editForm.controls.title?.dirty && editForm.controls.title?.invalid)">
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.title?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="jhipstersampleApp.post.shortText" for="field_shortText">Short Text</label>
+                    <input type="text" class="form-control" name="shortText" id="field_shortText"
+                        [(ngModel)]="post.shortText" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="jhipstersampleApp.post.fullText" for="field_fullText">Full Text</label>
+                    <input type="text" class="form-control" name="fullText" id="field_fullText"
+                        [(ngModel)]="post.fullText" />
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="jhipstersampleApp.post.blog" for="field_blog">Blog</label>
+                    <select class="form-control" id="field_blog" name="blog" [(ngModel)]="post.blog" >
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="blogOption.id === post.blog?.id ? post.blog : blogOption" *ngFor="let blogOption of blogs; trackBy: trackBlogById">{{blogOption.title}}</option>
+                    </select>
+                </div>
+            </div>
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">
+                    <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+                </button>
+                <button type="submit" id="save-entity" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
