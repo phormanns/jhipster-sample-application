@@ -16,12 +16,12 @@
 
 spring:
     application:
-        name: jhipstersample
+        name: jhipsample
     cache:
         type: simple
     datasource:
         type: com.zaxxer.hikari.HikariDataSource
-        url: jdbc:h2:mem:jhipstersample;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE
+        url: jdbc:h2:mem:jhipsample;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE
         name:
         username:
         password:
@@ -87,7 +87,7 @@ jhipster:
         authentication:
             jwt:
                 # This token must be encoded using Base64 (you can type `echo 'secret-key'|base64` on your command line)
-                base64-secret: NGI3MjY2YjBhMWRkZDNlOGI1MWYwNGRhYzcxZWU5NTk2OTIyZGYyYjMyMmE4N2YxNmE5NTY5MDVlOTIyOTY2MzQ2YWIyMzgzM2ViOTM3Yjk1NWNkY2I3ZTlhZTBkNzdjNzA3YTRkN2Q1ZjZkZWVmOTRkZDllMjUzZTExMDNiNGE=
+                base64-secret: ZmIzM2JjNzg4ZDhmODk5YjRhNjAyNTRiNDg4NTI1YmYwZDllOWIzNjFlZjYxZjIwZmI5ZDRlNWMyNWVkOGJjZjYzZTE2ZDI5ZDM1YTVmOGJjZmYyN2NhMjZkNWZiOTBiZWY5YmNmOWNlY2U1MWRjZjIxZDRhNWM0ODk0MTk2YjQ=
                 # Token is valid 24 hours
                 token-validity-in-seconds: 86400
     metrics: # DropWizard Metrics configuration, used by MetricsConfiguration

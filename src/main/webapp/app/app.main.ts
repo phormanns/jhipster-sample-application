@@ -1,6 +1,6 @@
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 import { ProdConfig } from './blocks/config/prod.config';
-import { JhipstersampleAppModule } from './app.module';
+import { JhipsampleAppModule } from './app.module';
 
 ProdConfig();
 
@@ -9,6 +9,6 @@ if (module['hot']) {
 }
 
 platformBrowserDynamic()
-    .bootstrapModule(JhipstersampleAppModule, { preserveWhitespaces: true })
+    .bootstrapModule(JhipsampleAppModule, { preserveWhitespaces: true })
     .then(success => console.log(`Application started`))
     .catch(err => console.error(err));

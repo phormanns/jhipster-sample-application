@@ -17,7 +17,7 @@ logging:
     level:
         ROOT: DEBUG
         io.github.jhipster: DEBUG
-        de.ostwall195.jhipster.sample: DEBUG
+        de.ostwall195.jhipsample: DEBUG
 
 spring:
     profiles:
@@ -37,8 +37,8 @@ spring:
             indent-output: true
     datasource:
         type: com.zaxxer.hikari.HikariDataSource
-        url: jdbc:h2:file:./target/h2db/db/jhipstersample;DB_CLOSE_DELAY=-1
-        username: jhipstersample
+        url: jdbc:h2:file:./target/h2db/db/jhipsample;DB_CLOSE_DELAY=-1
+        username: jhipsample
         password:
         hikari:
             auto-commit: false
@@ -96,12 +96,12 @@ jhipster:
         authentication:
             jwt:
                 # This token must be encoded using Base64 and be at least 256 bits long (you can type `openssl rand -base64 64` on your command line to generate a 512 bits one)
-                base64-secret: NGI3MjY2YjBhMWRkZDNlOGI1MWYwNGRhYzcxZWU5NTk2OTIyZGYyYjMyMmE4N2YxNmE5NTY5MDVlOTIyOTY2MzQ2YWIyMzgzM2ViOTM3Yjk1NWNkY2I3ZTlhZTBkNzdjNzA3YTRkN2Q1ZjZkZWVmOTRkZDllMjUzZTExMDNiNGE=
+                base64-secret: ZmIzM2JjNzg4ZDhmODk5YjRhNjAyNTRiNDg4NTI1YmYwZDllOWIzNjFlZjYxZjIwZmI5ZDRlNWMyNWVkOGJjZjYzZTE2ZDI5ZDM1YTVmOGJjZmYyN2NhMjZkNWZiOTBiZWY5YmNmOWNlY2U1MWRjZjIxZDRhNWM0ODk0MTk2YjQ=
                 # Token is valid 24 hours
                 token-validity-in-seconds: 86400
                 token-validity-in-seconds-for-remember-me: 2592000
     mail: # specific JHipster mail property, for standard properties see MailProperties
-        from: jhipstersample@localhost
+        from: jhipsample@localhost
         base-url: http://127.0.0.1:8080
     metrics: # DropWizard Metrics configuration, used by MetricsConfiguration
         jmx:

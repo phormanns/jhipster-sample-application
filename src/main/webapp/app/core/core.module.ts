@@ -17,7 +17,7 @@ import locale from '@angular/common/locales/de';
         DatePipe
     ]
 })
-export class JhipstersampleCoreModule {
+export class JhipsampleCoreModule {
     constructor() {
         registerLocaleData(locale);
     }

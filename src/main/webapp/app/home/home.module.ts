@@ -1,12 +1,12 @@
 import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { RouterModule } from '@angular/router';
 
-import { JhipstersampleSharedModule } from 'app/shared';
+import { JhipsampleSharedModule } from 'app/shared';
 import { HOME_ROUTE, HomeComponent } from './';
 
 @NgModule({
-    imports: [JhipstersampleSharedModule, RouterModule.forChild([HOME_ROUTE])],
+    imports: [JhipsampleSharedModule, RouterModule.forChild([HOME_ROUTE])],
     declarations: [HomeComponent],
     schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
-export class JhipstersampleHomeModule {}
+export class JhipsampleHomeModule {}
